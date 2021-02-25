@@ -75,15 +75,15 @@ open class JXPagingListRefreshView: JXPagingView {
                 if currentScrollingListView.contentOffset.y > minContentOffsetYInListScrollView(currentScrollingListView) {
                     //mainTableView的header还没有消失，让listScrollView一直为0
                     setListScrollViewToMinContentOffsetY(currentScrollingListView)
-                    currentScrollingListView.showsVerticalScrollIndicator = false;
+                    currentScrollingListView.showsVerticalScrollIndicator = false
                 }
             } else {
                 //mainTableView的header刚好消失，固定mainTableView的位置，显示listScrollView的滚动条
                 setMainTableViewToMaxContentOffsetY()
-                currentScrollingListView.showsVerticalScrollIndicator = true;
+                currentScrollingListView.showsVerticalScrollIndicator = false
             }
         }
-        lastScrollingListViewContentOffsetY = currentScrollingListView.contentOffset.y;
+        lastScrollingListViewContentOffsetY = currentScrollingListView.contentOffset.y
     }
 
 }
