@@ -53,7 +53,13 @@ open class JXPagingView: UIView {
             listContainerView.defaultSelectedIndex = defaultSelectedIndex
         }
     }
-    public private(set) lazy var mainTableView: JXPagingMainTableView = JXPagingMainTableView(frame: CGRect.zero, style: .plain)
+    public private(set) lazy var mainTableView: JXPagingMainTableView = {
+        let tableView = JXPagingMainTableView(frame: CGRect.zero, style: .plain)
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
+        return tableView
+    }()
     public private(set) lazy var listContainerView: JXPagingListContainerView = JXPagingListContainerView(dataSource: self, type: listContainerType)
     /// 当前已经加载过可用的列表字典，key就是index值，value是对应的列表。
     public private(set) var validListDict = [Int:JXPagingViewListViewDelegate]()
